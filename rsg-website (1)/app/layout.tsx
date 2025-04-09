@@ -13,9 +13,9 @@ import { siteConfig } from "@/config/site"
 
 import "./globals.css"
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
 })
 
 const fontHeading = localFont({
