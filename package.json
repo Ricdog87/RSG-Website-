@@ -70,8 +70,7 @@
     "@react-three/drei": "latest",
     "schema-dts": "latest",
     "framer-motion": "latest",
-    "react-swipeable": "latest",
-    "nodemailer": "latest"
+    "react-swipeable": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
