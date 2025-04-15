@@ -71,8 +71,7 @@
     "schema-dts": "latest",
     "framer-motion": "latest",
     "react-swipeable": "latest",
-    "nodemailer": "latest",
-    "googleapis": "latest"
+    "nodemailer": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
