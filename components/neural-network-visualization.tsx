@@ -7,22 +7,30 @@ import * as THREE from "three"
 import React from "react"
 
 // Add this ErrorBoundary component at the top of the file:
+interface ErrorBoundaryProps {
+  children: React.ReactNode
+  fallback: React.ReactNode
+}
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+interface ErrorBoundaryState {
+  hasError: boolean
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props)
     this.state = { hasError: false }
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_: Error): ErrorBoundaryState {
     return { hasError: true }
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     console.error("Error in 3D visualization:", error, errorInfo)
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.state.hasError) {
       return this.props.fallback
     }

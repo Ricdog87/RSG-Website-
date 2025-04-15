@@ -287,7 +287,7 @@ export default function ResultsOverview({ results }: ResultsOverviewProps) {
 
 // Hilfsfunktionen für die Darstellung
 function getWorkStyleDescription(results: any) {
-  const workStyle = results.answers?.workStyle || ""
+  const workStyle = results?.answers?.workStyle || ""
 
   switch (workStyle) {
     case "structured":
@@ -336,7 +336,7 @@ function getWorkStyleDescription(results: any) {
 }
 
 function getDecisionMakingDescription(results: any) {
-  const decisionMaking = results.answers?.decisionMaking || ""
+  const decisionMaking = results?.answers?.decisionMaking || ""
 
   switch (decisionMaking) {
     case "analytical":
@@ -380,14 +380,14 @@ function getDecisionMakingDescription(results: any) {
 function getEducationRecommendations(results: any) {
   const recommendations = []
 
-  if (results.developmentAreas?.includes("Vertiefung der technischen Expertise in Cloud-Technologien")) {
+  if (results?.developmentAreas?.includes("Vertiefung der technischen Expertise in Cloud-Technologien")) {
     recommendations.push({
       title: "Cloud Computing Zertifizierung",
       description: "Erwerben Sie eine Zertifizierung in AWS, Azure oder Google Cloud, um Ihre Expertise zu vertiefen.",
     })
   }
 
-  if (results.developmentAreas?.includes("Ausbau von Leadership-Fähigkeiten für Teamleitungspositionen")) {
+  if (results?.developmentAreas?.includes("Ausbau von Leadership-Fähigkeiten für Teamleitungspositionen")) {
     recommendations.push({
       title: "Leadership-Training",
       description:
@@ -395,7 +395,7 @@ function getEducationRecommendations(results: any) {
     })
   }
 
-  if (results.developmentAreas?.includes("Weiterbildung im Bereich Datenanalyse und Business Intelligence")) {
+  if (results?.developmentAreas?.includes("Weiterbildung im Bereich Datenanalyse und Business Intelligence")) {
     recommendations.push({
       title: "Data Science Kurs",
       description:

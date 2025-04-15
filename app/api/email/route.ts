@@ -135,6 +135,7 @@ export async function POST(request: NextRequest) {
     console.error("Fehler beim Senden der E-Mail:", error)
     return NextResponse.json(
       {
+        success: false,
         error: "Fehler beim Senden der E-Mail",
         details: error instanceof Error ? error.message : "Unbekannter Fehler",
       },

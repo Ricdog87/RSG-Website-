@@ -9,19 +9,27 @@ const STARHUNTER_PASSWORD = "7c6127ab65"
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
-    const file = formData.get("file") as File
+    const file = formData.get("file") as File | null
     const firstName = formData.get("firstName") as string
     const lastName = formData.get("lastName") as string
     const email = formData.get("email") as string
     const phone = formData.get("phone") as string
     const answers = formData.get("answers") as string
 
-    if (!file || !firstName || !lastName || !email) {
+    if (!firstName || !lastName || !email) {
       return NextResponse.json({ error: "Fehlende Daten für die Kandidatenverarbeitung" }, { status: 400 })
     }
 
-    // Parse CV content
-    const cvContent = await parseCV(file)
+    // Parse CV content if file exists
+    let cvContent = {}
+    if (file) {
+      try {
+        cvContent = await parseCV(file)
+      } catch (parseError) {
+        console.error("Fehler beim Parsen des Lebenslaufs:", parseError)
+        cvContent = { error: "Lebenslauf konnte nicht analysiert werden" }
+      }
+    }
 
     // Lokale Verarbeitung der Daten
     console.log("Verarbeite Kandidatendaten lokal:", { firstName, lastName, email })
@@ -66,8 +74,8 @@ export async function POST(request: NextRequest) {
           lastName,
           email,
           phone,
-          fileName: file.name,
-          fileSize: file.size,
+          fileName: file ? file.name : "Kein Lebenslauf",
+          fileSize: file ? file.size : 0,
           answers: answers ? JSON.parse(answers) : {},
         })
         console.log("E-Mail-Benachrichtigung erfolgreich gesendet")
@@ -88,7 +96,14 @@ export async function POST(request: NextRequest) {
     })
   } catch (error) {
     console.error("Fehler bei der Kandidatenverarbeitung:", error)
-    return NextResponse.json({ error: "Fehler bei der Verarbeitung der Anfrage" }, { status: 500 })
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Fehler bei der Verarbeitung der Anfrage",
+        details: error instanceof Error ? error.message : "Unbekannter Fehler",
+      },
+      { status: 500 },
+    )
   }
 }
 
@@ -103,7 +118,7 @@ async function attemptStarhunterIntegration(data: {
   lastName: string
   email: string
   phone: string
-  file: File
+  file: File | null
   answers: string
   cvContent: any
 }) {
@@ -237,75 +252,85 @@ async function sendEmailNotification(data: {
 
   // Erstelle HTML-Inhalt für die E-Mail
   const content = `
-    <html>
-      <head>
-        <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          h1 { color: #06b6d4; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-          h2 { color: #0ea5e9; margin-top: 20px; }
-          .section { margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 5px; }
-          .label { font-weight: bold; margin-right: 10px; }
-          .alert { background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin: 15px 0; }
-          .footer { margin-top: 30px; font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 10px; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>Neuer Kandidat über KI-Matching</h1>
-          
-          <div class="alert">
-            <strong>Hinweis:</strong> Die Starhunter-Integration war nicht erfolgreich. 
-            Bitte verarbeiten Sie diese Kandidatendaten manuell.
-          </div>
-          
-          <div class="section">
-            <h2>Persönliche Daten</h2>
-            <p><span class="label">Name:</span> ${data.firstName} ${data.lastName}</p>
-            <p><span class="label">E-Mail:</span> ${data.email}</p>
-            <p><span class="label">Telefon:</span> ${data.phone || "Nicht angegeben"}</p>
-          </div>
-          
-          <div class="section">
-            <h2>Lebenslauf</h2>
-            <p><span class="label">Dateiname:</span> ${data.fileName}</p>
-            <p><span class="label">Dateigröße:</span> ${Math.round(data.fileSize / 1024)} KB</p>
-            <p>Der Lebenslauf wurde hochgeladen, konnte aber nicht automatisch in Starhunter integriert werden.</p>
-          </div>
-          
-          <div class="section">
-            <h2>Antworten auf psychologische Fragen</h2>
-            ${formatAnswers(data.answers)}
-          </div>
-          
-          <div class="footer">
-            <p>Diese E-Mail wurde automatisch vom RSG AI Talent Matching System gesendet.</p>
-            <p>© ${new Date().getFullYear()} RSG Recruiting Solutions Group GmbH</p>
-          </div>
-        </div>
-      </body>
-    </html>
-  `
+   <html>
+     <head>
+       <style>
+         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+         h1 { color: #06b6d4; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+         h2 { color: #0ea5e9; margin-top: 20px; }
+         .section { margin: 20px 0; padding: 15px; background: #f9f9f9; border-radius: 5px; }
+         .label { font-weight: bold; margin-right: 10px; }
+         .alert { background-color: #fff4e5; border-left: 4px solid #ff9800; padding: 10px; margin: 15px 0; }
+         .footer { margin-top: 30px; font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 10px; }
+       </style>
+     </head>
+     <body>
+       <div class="container">
+         <h1>Neuer Kandidat über KI-Matching</h1>
+         
+         <div class="alert">
+           <strong>Hinweis:</strong> Die Starhunter-Integration war nicht erfolgreich. 
+           Bitte verarbeiten Sie diese Kandidatendaten manuell.
+         </div>
+         
+         <div class="section">
+           <h2>Persönliche Daten</h2>
+           <p><span class="label">Name:</span> ${data.firstName} ${data.lastName}</p>
+           <p><span class="label">E-Mail:</span> ${data.email}</p>
+           <p><span class="label">Telefon:</span> ${data.phone || "Nicht angegeben"}</p>
+         </div>
+         
+         <div class="section">
+           <h2>Lebenslauf</h2>
+           <p><span class="label">Dateiname:</span> ${data.fileName}</p>
+           <p><span class="label">Dateigröße:</span> ${Math.round(data.fileSize / 1024)} KB</p>
+           <p>Der Lebenslauf wurde hochgeladen, konnte aber nicht automatisch in Starhunter integriert werden.</p>
+         </div>
+         
+         <div class="section">
+           <h2>Antworten auf psychologische Fragen</h2>
+           ${formatAnswers(data.answers)}
+         </div>
+         
+         <div class="footer">
+           <p>Diese E-Mail wurde automatisch vom RSG AI Talent Matching System gesendet.</p>
+           <p>© ${new Date().getFullYear()} RSG Recruiting Solutions Group GmbH</p>
+         </div>
+       </div>
+     </body>
+   </html>
+ `
 
-  // Sende die E-Mail über die E-Mail-API
-  const response = await fetch("/api/email", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      subject,
-      content,
-      // Wenn wir den Lebenslauf als Anhang senden möchten, müssten wir hier die Datei als Base64 hinzufügen
-    }),
-  })
+  try {
+    // Sende die E-Mail über die E-Mail-API
+    const response = await fetch("/api/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        subject,
+        content,
+        // Wenn wir den Lebenslauf als Anhang senden möchten, müssten wir hier die Datei als Base64 hinzufügen
+      }),
+    })
 
-  if (!response.ok) {
-    const errorData = await response.json()
-    throw new Error(`E-Mail-Versand fehlgeschlagen: ${errorData.error || response.statusText}`)
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(`E-Mail-Versand fehlgeschlagen: ${errorData.error || response.statusText}`)
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error("Fehler beim Senden der E-Mail:", error)
+    // Return a fallback response to prevent the application from crashing
+    return {
+      success: false,
+      simulated: true,
+      error: error instanceof Error ? error.message : "Unbekannter Fehler beim E-Mail-Versand",
+    }
   }
-
-  return await response.json()
 }
 
 // Hilfsfunktion zum Formatieren der Antworten für die E-Mail
@@ -329,38 +354,38 @@ function formatAnswers(answers: any): string {
 
   // Arbeitsstil
   if (answers.workStyle) {
-    const workStyles = {
+    const workStyles: Record<string, string> = {
       structured: "Strukturierte Arbeitsweise mit klaren Prozessen",
       flexible: "Flexible Arbeitsweise mit wechselnden Aufgaben",
       autonomous: "Autonome Arbeitsweise mit eigenen Entscheidungen",
       collaborative: "Kollaborative Arbeitsweise im Team",
       innovative: "Innovative Arbeitsweise mit neuen Lösungsansätzen",
     }
-    html += `<p><strong>Bevorzugter Arbeitsstil:</strong> ${workStyles[answers.workStyle as keyof typeof workStyles] || answers.workStyle}</p>`
+    html += `<p><strong>Bevorzugter Arbeitsstil:</strong> ${workStyles[answers.workStyle] || answers.workStyle}</p>`
   }
 
   // Entscheidungsfindung
   if (answers.decisionMaking) {
-    const decisionStyles = {
+    const decisionStyles: Record<string, string> = {
       analytical: "Analytische, faktenbasierte Entscheidungsfindung",
       intuitive: "Intuitive Entscheidungsfindung",
       collaborative: "Kollaborative Entscheidungsfindung im Konsens",
       decisive: "Schnelle, entschlossene Entscheidungsfindung",
       cautious: "Vorsichtige, risikominimierende Entscheidungsfindung",
     }
-    html += `<p><strong>Entscheidungsfindung:</strong> ${decisionStyles[answers.decisionMaking as keyof typeof decisionStyles] || answers.decisionMaking}</p>`
+    html += `<p><strong>Entscheidungsfindung:</strong> ${decisionStyles[answers.decisionMaking] || answers.decisionMaking}</p>`
   }
 
   // Teamrolle
   if (answers.teamRole) {
-    const teamRoles = {
+    const teamRoles: Record<string, string> = {
       leader: "Führungsrolle",
       specialist: "Spezialistenrolle",
       coordinator: "Koordinatorrolle",
       innovator: "Innovatorrolle",
       supporter: "Unterstützerrolle",
     }
-    html += `<p><strong>Bevorzugte Teamrolle:</strong> ${teamRoles[answers.teamRole as keyof typeof teamRoles] || answers.teamRole}</p>`
+    html += `<p><strong>Bevorzugte Teamrolle:</strong> ${teamRoles[answers.teamRole] || answers.teamRole}</p>`
   }
 
   return html

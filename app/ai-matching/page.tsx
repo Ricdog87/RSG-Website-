@@ -250,208 +250,232 @@ export default function AIMatching() {
 
   // Neue Funktion für intelligente Analyseergebnisse
   const generateIntelligentAnalysisResults = (fileName: string, answers: any) => {
-    // Erkennung des Karrierepfads basierend auf dem Dateinamen und den Antworten
-    let careerPath = "Allgemein"
+    try {
+      // Erkennung des Karrierepfads basierend auf dem Dateinamen und den Antworten
+      let careerPath = "Allgemein"
 
-    // Erkennung für HR-Profil
-    if (
-      fileName.toLowerCase().includes("hr") ||
-      fileName.toLowerCase().includes("human resources") ||
-      answers.question1.toLowerCase().includes("personal") ||
-      answers.question1.toLowerCase().includes("recruiting") ||
-      answers.question1.toLowerCase().includes("hr") ||
-      answers.question2.toLowerCase().includes("personal") ||
-      answers.question2.toLowerCase().includes("recruiting") ||
-      answers.question2.toLowerCase().includes("hr")
-    ) {
-      careerPath = "Human Resources"
-    }
-
-    // Erkennung für IT-Profil
-    else if (
-      fileName.toLowerCase().includes("entwickler") ||
-      fileName.toLowerCase().includes("developer") ||
-      fileName.toLowerCase().includes("it") ||
-      answers.question1.toLowerCase().includes("entwickl") ||
-      answers.question1.toLowerCase().includes("programm") ||
-      answers.question1.toLowerCase().includes("software") ||
-      answers.question2.toLowerCase().includes("entwickl") ||
-      answers.question2.toLowerCase().includes("programm") ||
-      answers.question2.toLowerCase().includes("software")
-    ) {
-      careerPath = "IT & Entwicklung"
-    }
-
-    // Erkennung für Finance-Profil
-    else if (
-      fileName.toLowerCase().includes("finance") ||
-      fileName.toLowerCase().includes("finanzen") ||
-      fileName.toLowerCase().includes("controlling") ||
-      answers.question1.toLowerCase().includes("finanzen") ||
-      answers.question1.toLowerCase().includes("controlling") ||
-      answers.question1.toLowerCase().includes("buchhaltung") ||
-      answers.question2.toLowerCase().includes("finanzen") ||
-      answers.question2.toLowerCase().includes("controlling") ||
-      answers.question2.toLowerCase().includes("buchhaltung")
-    ) {
-      careerPath = "Finance & Controlling"
-    }
-
-    // Erkennung für Marketing-Profil
-    else if (
-      fileName.toLowerCase().includes("marketing") ||
-      fileName.toLowerCase().includes("kommunikation") ||
-      fileName.toLowerCase().includes("pr") ||
-      answers.question1.toLowerCase().includes("marketing") ||
-      answers.question1.toLowerCase().includes("kommunikation") ||
-      answers.question1.toLowerCase().includes("social media") ||
-      answers.question2.toLowerCase().includes("marketing") ||
-      answers.question2.toLowerCase().includes("kommunikation") ||
-      answers.question2.toLowerCase().includes("social media")
-    ) {
-      careerPath = "Marketing & Kommunikation"
-    }
-
-    // Karrierepfad-spezifische Ergebnisse generieren
-    let topCategories = []
-    let personality = {}
-    let recommendations = []
-    let matchingJobs = []
-
-    // HR-spezifische Ergebnisse
-    if (careerPath === "Human Resources") {
-      topCategories = [
-        { name: "HR Management", score: 92, color: "#06b6d4" },
-        { name: "Recruiting & Talent Acquisition", score: 87, color: "#0ea5e9" },
-        { name: "Personalentwicklung", score: 78, color: "#2563eb" },
-      ]
-
-      personality = {
-        kommunikativ: 88,
-        analytisch: 72,
-        empathisch: 85,
-        organisiert: 79,
-        teamorientiert: 82,
+      // Erkennung für HR-Profil
+      if (
+        fileName.toLowerCase().includes("hr") ||
+        fileName.toLowerCase().includes("human resources") ||
+        (answers.question1 && answers.question1.toLowerCase().includes("personal")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("recruiting")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("hr")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("personal")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("recruiting")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("hr"))
+      ) {
+        careerPath = "Human Resources"
       }
 
-      recommendations = [
-        "HR Business Partner",
-        "Talent Acquisition Manager",
-        "Personalreferent",
-        "HR Development Specialist",
-      ]
-
-      matchingJobs = ["HR Business Partner", "Personalreferent", "Recruiting Manager"]
-    }
-
-    // IT-spezifische Ergebnisse
-    else if (careerPath === "IT & Entwicklung") {
-      topCategories = [
-        { name: "Softwareentwicklung", score: 90, color: "#06b6d4" },
-        { name: "Projektmanagement", score: 75, color: "#0ea5e9" },
-        { name: "DevOps", score: 68, color: "#2563eb" },
-      ]
-
-      personality = {
-        analytisch: 90,
-        problemlösend: 85,
-        strukturiert: 78,
-        innovativ: 72,
-        teamorientiert: 65,
+      // Erkennung für IT-Profil
+      else if (
+        fileName.toLowerCase().includes("entwickler") ||
+        fileName.toLowerCase().includes("developer") ||
+        fileName.toLowerCase().includes("it") ||
+        (answers.question1 && answers.question1.toLowerCase().includes("entwickl")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("programm")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("software")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("entwickl")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("programm")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("software"))
+      ) {
+        careerPath = "IT & Entwicklung"
       }
 
-      recommendations = ["Senior Full-Stack Entwickler", "IT-Projektmanager", "DevOps Engineer", "Software Architect"]
-
-      matchingJobs = ["Senior Full-Stack Entwickler", "IT-Projektmanager", "DevOps Engineer"]
-    }
-
-    // Finance-spezifische Ergebnisse
-    else if (careerPath === "Finance & Controlling") {
-      topCategories = [
-        { name: "Controlling", score: 89, color: "#06b6d4" },
-        { name: "Finanzanalyse", score: 82, color: "#0ea5e9" },
-        { name: "Reporting", score: 76, color: "#2563eb" },
-      ]
-
-      personality = {
-        analytisch: 92,
-        detailorientiert: 88,
-        strukturiert: 85,
-        zahlenaffin: 90,
-        kommunikativ: 68,
+      // Erkennung für Finance-Profil
+      else if (
+        fileName.toLowerCase().includes("finance") ||
+        fileName.toLowerCase().includes("finanzen") ||
+        fileName.toLowerCase().includes("controlling") ||
+        (answers.question1 && answers.question1.toLowerCase().includes("finanzen")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("controlling")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("buchhaltung")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("finanzen")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("controlling")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("buchhaltung"))
+      ) {
+        careerPath = "Finance & Controlling"
       }
 
-      recommendations = ["Senior Controller", "Finanzanalyst", "Finance Manager", "Reporting Specialist"]
-
-      matchingJobs = ["Finanzanalyst", "Senior Controller", "Finance Manager"]
-    }
-
-    // Marketing-spezifische Ergebnisse
-    else if (careerPath === "Marketing & Kommunikation") {
-      topCategories = [
-        { name: "Content Marketing", score: 88, color: "#06b6d4" },
-        { name: "Social Media", score: 84, color: "#0ea5e9" },
-        { name: "Marketingstrategie", score: 79, color: "#2563eb" },
-      ]
-
-      personality = {
-        kreativ: 90,
-        kommunikativ: 87,
-        analytisch: 75,
-        teamorientiert: 82,
-        kundenorientiert: 85,
+      // Erkennung für Marketing-Profil
+      else if (
+        fileName.toLowerCase().includes("marketing") ||
+        fileName.toLowerCase().includes("kommunikation") ||
+        fileName.toLowerCase().includes("pr") ||
+        (answers.question1 && answers.question1.toLowerCase().includes("marketing")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("kommunikation")) ||
+        (answers.question1 && answers.question1.toLowerCase().includes("social media")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("marketing")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("kommunikation")) ||
+        (answers.question2 && answers.question2.toLowerCase().includes("social media"))
+      ) {
+        careerPath = "Marketing & Kommunikation"
       }
 
-      recommendations = ["Marketing Manager", "Content Strategist", "Social Media Manager", "Brand Manager"]
+      // Karrierepfad-spezifische Ergebnisse generieren
+      let topCategories = []
+      let personality = {}
+      let recommendations = []
+      let matchingJobs = []
 
-      matchingJobs = ["Marketing Manager", "Content Strategist", "Social Media Manager"]
-    }
+      // HR-spezifische Ergebnisse
+      if (careerPath === "Human Resources") {
+        topCategories = [
+          { name: "HR Management", score: 92, color: "#06b6d4" },
+          { name: "Recruiting & Talent Acquisition", score: 87, color: "#0ea5e9" },
+          { name: "Personalentwicklung", score: 78, color: "#2563eb" },
+        ]
 
-    // Allgemeine Ergebnisse (Fallback)
-    else {
-      topCategories = [
-        { name: "Projektmanagement", score: 85, color: "#06b6d4" },
-        { name: "Kommunikation", score: 80, color: "#0ea5e9" },
-        { name: "Teamführung", score: 75, color: "#2563eb" },
-      ]
+        personality = {
+          kommunikativ: 88,
+          analytisch: 72,
+          empathisch: 85,
+          organisiert: 79,
+          teamorientiert: 82,
+        }
 
-      personality = {
-        kommunikativ: 82,
-        analytisch: 78,
-        teamorientiert: 80,
-        organisiert: 75,
-        lösungsorientiert: 83,
+        recommendations = [
+          "HR Business Partner",
+          "Talent Acquisition Manager",
+          "Personalreferent",
+          "HR Development Specialist",
+        ]
+
+        matchingJobs = ["HR Business Partner", "Personalreferent", "Recruiting Manager"]
       }
 
-      recommendations = ["Projektmanager", "Team Lead", "Business Analyst", "Consultant"]
+      // IT-spezifische Ergebnisse
+      else if (careerPath === "IT & Entwicklung") {
+        topCategories = [
+          { name: "Softwareentwicklung", score: 90, color: "#06b6d4" },
+          { name: "Projektmanagement", score: 75, color: "#0ea5e9" },
+          { name: "DevOps", score: 68, color: "#2563eb" },
+        ]
 
-      matchingJobs = ["Projektmanager", "Team Lead", "Business Analyst"]
-    }
+        personality = {
+          analytisch: 90,
+          problemlösend: 85,
+          strukturiert: 78,
+          innovativ: 72,
+          teamorientiert: 65,
+        }
 
-    // Persönlichkeitsanpassungen basierend auf den Antworten
-    if (answers.workStyle === "structured") {
-      personality = { ...personality, strukturiert: 90, flexibel: 60 }
-    } else if (answers.workStyle === "flexible") {
-      personality = { ...personality, flexibel: 90, strukturiert: 65 }
-    }
+        recommendations = ["Senior Full-Stack Entwickler", "IT-Projektmanager", "DevOps Engineer", "Software Architect"]
 
-    if (answers.teamRole === "leader") {
-      recommendations.unshift("Team Lead")
-      recommendations.unshift("Abteilungsleiter")
-      personality = { ...personality, führungsstark: 88 }
-    } else if (answers.teamRole === "specialist") {
-      recommendations.unshift("Senior Specialist")
-      personality = { ...personality, fachkompetent: 92 }
-    }
+        matchingJobs = ["Senior Full-Stack Entwickler", "IT-Projektmanager", "DevOps Engineer"]
+      }
 
-    return {
-      careerPath,
-      topCategories,
-      personality,
-      recommendations,
-      matchingJobs,
-      strengths: generateStrengths(answers),
-      developmentAreas: generateDevelopmentAreas(answers),
+      // Finance-spezifische Ergebnisse
+      else if (careerPath === "Finance & Controlling") {
+        topCategories = [
+          { name: "Controlling", score: 89, color: "#06b6d4" },
+          { name: "Finanzanalyse", score: 82, color: "#0ea5e9" },
+          { name: "Reporting", score: 76, color: "#2563eb" },
+        ]
+
+        personality = {
+          analytisch: 92,
+          detailorientiert: 88,
+          strukturiert: 85,
+          zahlenaffin: 90,
+          kommunikativ: 68,
+        }
+
+        recommendations = ["Senior Controller", "Finanzanalyst", "Finance Manager", "Reporting Specialist"]
+
+        matchingJobs = ["Finanzanalyst", "Senior Controller", "Finance Manager"]
+      }
+
+      // Marketing-spezifische Ergebnisse
+      else if (careerPath === "Marketing & Kommunikation") {
+        topCategories = [
+          { name: "Content Marketing", score: 88, color: "#06b6d4" },
+          { name: "Social Media", score: 84, color: "#0ea5e9" },
+          { name: "Marketingstrategie", score: 79, color: "#2563eb" },
+        ]
+
+        personality = {
+          kreativ: 90,
+          kommunikativ: 87,
+          analytisch: 75,
+          teamorientiert: 82,
+          kundenorientiert: 85,
+        }
+
+        recommendations = ["Marketing Manager", "Content Strategist", "Social Media Manager", "Brand Manager"]
+
+        matchingJobs = ["Marketing Manager", "Content Strategist", "Social Media Manager"]
+      }
+
+      // Allgemeine Ergebnisse (Fallback)
+      else {
+        topCategories = [
+          { name: "Projektmanagement", score: 85, color: "#06b6d4" },
+          { name: "Kommunikation", score: 80, color: "#0ea5e9" },
+          { name: "Teamführung", score: 75, color: "#2563eb" },
+        ]
+
+        personality = {
+          kommunikativ: 82,
+          analytisch: 78,
+          teamorientiert: 80,
+          organisiert: 75,
+          lösungsorientiert: 83,
+        }
+
+        recommendations = ["Projektmanager", "Team Lead", "Business Analyst", "Consultant"]
+
+        matchingJobs = ["Projektmanager", "Team Lead", "Business Analyst"]
+      }
+
+      // Persönlichkeitsanpassungen basierend auf den Antworten
+      if (answers.workStyle === "structured") {
+        personality = { ...personality, strukturiert: 90, flexibel: 60 }
+      } else if (answers.workStyle === "flexible") {
+        personality = { ...personality, flexibel: 90, strukturiert: 65 }
+      }
+
+      if (answers.teamRole === "leader") {
+        recommendations.unshift("Team Lead")
+        recommendations.unshift("Abteilungsleiter")
+        personality = { ...personality, führungsstark: 88 }
+      } else if (answers.teamRole === "specialist") {
+        recommendations.unshift("Senior Specialist")
+        personality = { ...personality, fachkompetent: 92 }
+      }
+
+      return {
+        careerPath,
+        topCategories,
+        personality,
+        recommendations,
+        matchingJobs,
+        strengths: generateStrengths(answers),
+        developmentAreas: generateDevelopmentAreas(answers),
+      }
+    } catch (error) {
+      console.error("Fehler bei der intelligenten Analyse:", error)
+      // Return fallback results to prevent application crashes
+      return {
+        careerPath: "Allgemein",
+        topCategories: [
+          { name: "Kommunikation", score: 80, color: "#06b6d4" },
+          { name: "Teamarbeit", score: 75, color: "#0ea5e9" },
+          { name: "Problemlösung", score: 70, color: "#2563eb" },
+        ],
+        personality: {
+          kommunikativ: 80,
+          analytisch: 75,
+          teamorientiert: 85,
+          organisiert: 70,
+          lösungsorientiert: 80,
+        },
+        recommendations: ["Projektmanager", "Business Analyst", "Consultant", "Team Lead"],
+        matchingJobs: ["Projektmanager", "Business Analyst", "Consultant"],
+        strengths: ["Kommunikationsstärke", "Teamarbeit", "Analytisches Denken", "Selbstorganisation"],
+        developmentAreas: ["Weiterentwicklung der strategischen Kompetenzen", "Ausbau der Führungsfähigkeiten"],
+      }
     }
   }
 
