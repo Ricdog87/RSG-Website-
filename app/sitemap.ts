@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.rsg-recruiting.de"
+  const lastModified = new Date()
 
   // Main pages
   const routes = [
@@ -12,9 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/impressum",
     "/datenschutz",
     "/ai-matching",
+    "/kontakt",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency: "weekly" as const,
     priority: route === "" ? 1 : 0.8,
   }))
@@ -30,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/bereiche/assistenz",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }))

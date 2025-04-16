@@ -2,12 +2,44 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
+import { organizationJsonLd, websiteJsonLd } from "./structured-data"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "RSG Recruiting Solutions Group",
-  description: "Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen.",
+  title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
+  description:
+    "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen. KI-gestütztes Talent-Matching und Recruiting.",
   generator: "Next.js",
+  applicationName: "RSG Recruiting Solutions Group",
+  keywords: ["Personalvermittlung", "Recruiting", "Fixpreis", "Headhunting", "KI-Matching", "Talent", "Jobs"],
+  authors: [{ name: "RSG Recruiting Solutions Group GmbH" }],
+  creator: "RSG Recruiting Solutions Group GmbH",
+  publisher: "RSG Recruiting Solutions Group GmbH",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://www.rsg-recruiting.de"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
+    description: "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen.",
+    url: "https://www.rsg-recruiting.de",
+    siteName: "RSG Recruiting Solutions Group",
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
+    description: "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen.",
+  },
+  verification: {
+    google: "google-site-verification-code", // Ersetzen Sie dies mit Ihrem tatsächlichen Verifizierungscode
+  },
 }
 
 export default function RootLayout({
@@ -20,21 +52,19 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         {/* Structured data for better SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "RSG Recruiting Solutions Group",
-              url: "https://www.rsg-recruiting.de/",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: "https://www.rsg-recruiting.de/stellenangebote?search={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            }),
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
           }}
         />
 

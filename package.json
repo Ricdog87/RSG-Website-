@@ -68,9 +68,9 @@
     "@emotion/is-prop-valid": "latest",
     "gsap": "latest",
     "@react-three/drei": "latest",
-    "schema-dts": "latest",
     "framer-motion": "latest",
-    "react-swipeable": "latest"
+    "react-swipeable": "latest",
+    "schema-dts": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

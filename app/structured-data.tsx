@@ -1,4 +1,4 @@
-import type { Organization, WithContext } from "schema-dts"
+import type { Organization, WithContext, WebSite } from "schema-dts"
 
 export const organizationJsonLd: WithContext<Organization> = {
   "@context": "https://schema.org",
@@ -21,4 +21,16 @@ export const organizationJsonLd: WithContext<Organization> = {
     contactType: "customer service",
   },
   sameAs: ["https://www.linkedin.com/company/105505351/", "https://www.instagram.com/recruiting_solutions_group/"],
+}
+
+export const websiteJsonLd: WithContext<WebSite> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "RSG Recruiting Solutions Group",
+  url: "https://www.rsg-recruiting.de/",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://www.rsg-recruiting.de/stellenangebote?search={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
 }
