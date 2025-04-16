@@ -406,11 +406,11 @@ export default function Home() {
         {/* Update the hero section for better mobile responsiveness */}
         <div className="container mx-auto px-4 z-10 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-text-shimmer px-2">
-            Tausende Euro bei der Personalsuche sparen
+            Personalvermittlung zum Fixpreis | Headhunting & Recruiting
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 sm:mb-12 font-light px-4">
-            Personalvermittlung zum Fixpreis von 9.999 € netto. Keine prozentualen Honorare mehr. Gleicher Preis für
-            alle Positionen und Gehaltsstufen.
+            Professionelles Recruiting und Headhunting zum garantierten Festpreis von 9.999 € netto. Keine prozentualen
+            Honorare mehr. Gleicher Preis für alle Positionen und Gehaltsstufen.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 px-4">
             <a href="#calculator" className="w-full sm:w-auto">
@@ -443,7 +443,7 @@ export default function Home() {
       <section className="relative py-16 bg-black/40">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-            Was unsere Kunden sagen
+            Erfolgreiche Personalvermittlung: Das sagen unsere Kunden
           </h2>
 
           {/* Desktop view - 3 boxes side by side */}
@@ -474,12 +474,13 @@ export default function Home() {
       <section id="calculator" ref={calculatorRef} className="relative py-24 flex items-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-            Jede unbesetzte Stelle kostet Sie Geld. Jeden Tag.
+            Vakanzkosten berechnen: Was kosten unbesetzte Stellen Ihr Unternehmen?
           </h2>
 
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-12 text-center">
-            Berechnen Sie hier und jetzt, wie viel Sie durch lange Vakanzen verlieren, und wie viel Sie mit unserem
-            Fixpreis-Modell sparen können. Die versteckten Kosten sind oft viel höher als Sie denken.
+            Berechnen Sie hier, wie viel Ihr Unternehmen durch offene Stellen verliert und wie viel Sie mit unserem
+            Fixpreis-Recruiting-Modell sparen können. Die versteckten Kosten sind oft deutlich höher als die
+            Personalvermittlungskosten.
           </p>
 
           <div className="max-w-5xl mx-auto">
@@ -499,7 +500,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                Warum zahlen Sie 30% Gehalt für Recruiting?
+                Personalvermittlung zum Fixpreis statt 30% Gehalt für Recruiting
               </h2>
 
               <div className="space-y-6 text-white/80">
@@ -607,12 +608,12 @@ export default function Home() {
       <section id="services" ref={servicesRef} className="relative py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-            Spezialisierte Expertise für jede Branche
+            Spezialisierte Personalvermittlung für alle Branchen und Positionen
           </h2>
 
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-16 text-center">
-            Unsere Recruitinglösungen decken alle Schlüsselbereiche moderner Unternehmen ab. Profitieren Sie von unserem
-            tiefen Branchenverständnis und einem Netzwerk hochqualifizierter Fachkräfte.
+            Unsere Recruiting- und Headhunting-Lösungen decken alle Schlüsselbereiche moderner Unternehmen ab.
+            Profitieren Sie von unserem tiefen Branchenverständnis und einem Netzwerk hochqualifizierter Fachkräfte.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -645,7 +646,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
-                Unsere Vision: Recruiting neu definieren
+                Unsere Vision: Recruiting und Headhunting neu definieren
               </h2>
 
               <div className="space-y-6 text-white/80">

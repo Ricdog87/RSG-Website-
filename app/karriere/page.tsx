@@ -7,6 +7,7 @@ import Image from "next/image"
 import { ArrowLeft, Calendar, Users, Rocket, Heart, Zap, Globe, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ParticleBackground from "@/components/particle-background"
+import Head from "next/head"
 
 export default function Karriere() {
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -115,6 +116,19 @@ export default function Karriere() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* SEO Meta Tags */}
+      <Head>
+        <title>Karriere bei RSG | Jobs im Recruiting und Personalwesen</title>
+        <meta
+          name="description"
+          content="Entdecken Sie spannende Karrieremöglichkeiten bei der RSG Recruiting Solutions Group. Werden Sie Teil unseres innovativen Teams und gestalten Sie die Zukunft der Personalvermittlung mit."
+        />
+        <meta
+          name="keywords"
+          content="Karriere, Jobs, Recruiting, Personalvermittlung, Stellenangebote, Bewerbung, Arbeitgeber, Headhunting"
+        />
+      </Head>
+
       {/* Particle Background */}
       <div className="fixed inset-0 z-0">
         <ParticleBackground />
@@ -130,24 +144,26 @@ export default function Karriere() {
           ref={titleRef}
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
         >
-          Karriere bei RSG
+          Karriere bei RSG Recruiting Solutions Group
         </h1>
 
         <div ref={contentRef} className="space-y-16">
-          {/* Intro Section */}
+          {/* Intro Section - Optimierter Text */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Gestalten Sie mit uns die Zukunft der Personalvermittlung
+                Gestalten Sie mit uns die Zukunft der Personalvermittlung und des Recruitings
               </h2>
               <p className="text-white/80 text-lg">
-                Bei RSG Recruiting Solutions Group GmbH bieten wir mehr als nur einen Job. Wir bieten die Möglichkeit,
-                Teil einer Revolution in der Personalvermittlung zu sein. Mit innovativen Technologien und einem
-                zukunftsorientierten Ansatz verbinden wir Talente mit Unternehmen auf eine völlig neue Art und Weise.
+                Bei der RSG Recruiting Solutions Group GmbH bieten wir mehr als nur einen Job. Wir bieten die
+                Möglichkeit, Teil einer Revolution in der Personalvermittlung zu sein. Mit innovativen KI-Technologien
+                und einem zukunftsorientierten Fixpreis-Modell verbinden wir Talente mit Unternehmen auf eine völlig
+                neue Art und Weise.
               </p>
               <p className="text-white/80 text-lg">
-                Wenn Sie nach einer Karriere suchen, die herausfordernd, erfüllend und zukunftssicher ist, dann sind Sie
-                bei uns genau richtig. Entdecken Sie die Möglichkeiten, die RSG Ihnen bietet.
+                Wenn Sie nach einer Karriere im Recruiting und Personalwesen suchen, die herausfordernd, erfüllend und
+                zukunftssicher ist, dann sind Sie bei uns genau richtig. Entdecken Sie die Möglichkeiten, die RSG Ihnen
+                bietet.
               </p>
               <div className="pt-4">
                 <Link href="#open-positions">

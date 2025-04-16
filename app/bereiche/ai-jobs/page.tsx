@@ -8,6 +8,7 @@ import { Brain, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import ParticleBackground from "@/components/particle-background"
+import Head from "next/head"
 
 export default function AIJobs() {
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -26,20 +27,33 @@ export default function AIJobs() {
   }, [])
 
   const aiRoles = [
-    "KI-Ingenieur",
-    "Machine Learning Spezialist",
-    "Data Scientist",
-    "NLP-Experte",
-    "Computer Vision Entwickler",
-    "KI-Ethik Berater",
-    "Robotik-Ingenieur",
-    "KI-Produktmanager",
-    "Deep Learning Forscher",
-    "KI-Systemarchitekt",
+    "KI-Ingenieur (m/w/d)",
+    "Machine Learning Spezialist (m/w/d)",
+    "Data Scientist (m/w/d)",
+    "NLP-Experte (m/w/d)",
+    "Computer Vision Entwickler (m/w/d)",
+    "KI-Ethik Berater (m/w/d)",
+    "Robotik-Ingenieur (m/w/d)",
+    "KI-Produktmanager (m/w/d)",
+    "Deep Learning Forscher (m/w/d)",
+    "KI-Systemarchitekt (m/w/d)",
   ]
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* SEO Meta Tags */}
+      <Head>
+        <title>KI-Jobs & Künstliche Intelligenz Karriere | RSG Recruiting</title>
+        <meta
+          name="description"
+          content="Spezialisierte Personalvermittlung für KI-Jobs und Künstliche Intelligenz Positionen. Finden Sie Ihre Traumstelle als KI-Ingenieur, Data Scientist oder Machine Learning Spezialist."
+        />
+        <meta
+          name="keywords"
+          content="KI-Jobs, Künstliche Intelligenz, Machine Learning, Data Science, KI-Ingenieur, NLP, Computer Vision, Deep Learning, Robotik, KI-Karriere"
+        />
+      </Head>
+
       {/* Particle Background */}
       <div className="fixed inset-0 z-0">
         <ParticleBackground />
@@ -57,13 +71,14 @@ export default function AIJobs() {
               ref={titleRef}
               className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
             >
-              KI-Jobs & Künstliche Intelligenz
+              KI-Jobs & Karriere in Künstlicher Intelligenz
             </h1>
 
             <div ref={contentRef} className="space-y-6 text-white/80">
               <p className="text-lg">
                 Die Zukunft der Arbeit ist KI-gestützt. Wir verbinden führende Unternehmen mit den besten Talenten im
-                Bereich der künstlichen Intelligenz und maschinellen Lernens.
+                Bereich der künstlichen Intelligenz und maschinellen Lernens. Unsere spezialisierte Personalvermittlung
+                für KI-Positionen bietet Ihnen Zugang zu den innovativsten Projekten und Unternehmen.
               </p>
 
               <div className="relative">
@@ -76,7 +91,8 @@ export default function AIJobs() {
                       <p>
                         Unser quantengestützter Algorithmus analysiert nicht nur technische Fähigkeiten, sondern auch
                         kulturelle Passung und Karriereziele, um die perfekte Übereinstimmung zwischen KI-Talenten und
-                        Unternehmen zu finden.
+                        Unternehmen zu finden. Mit unserem spezialisierten Netzwerk im KI-Bereich finden wir die besten
+                        Kandidaten für Ihre offenen Positionen.
                       </p>
                     </div>
                   </div>

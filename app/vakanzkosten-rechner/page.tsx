@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import ParticleBackground from "@/components/particle-background"
 import VacancyCostCalculator from "@/components/vacancy-cost-calculator"
+import Head from "next/head"
 
 export default function VakanzkostenRechner() {
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -42,6 +43,19 @@ export default function VakanzkostenRechner() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* SEO Meta Tags */}
+      <Head>
+        <title>Vakanzkosten-Rechner | Kosten unbesetzter Stellen berechnen | RSG Recruiting</title>
+        <meta
+          name="description"
+          content="Berechnen Sie die versteckten Kosten unbesetzter Stellen in Ihrem Unternehmen. Sparen Sie mit unserem Fixpreis-Recruiting-Modell bis zu 70% gegenüber traditionellen Personalberatern."
+        />
+        <meta
+          name="keywords"
+          content="Vakanzkosten, Recruiting-Kosten, Personalvermittlung Fixpreis, Headhunting, Stellenbesetzung, Personalberatung, Kosteneinsparung"
+        />
+      </Head>
+
       {/* Particle Background */}
       <div className="fixed inset-0 z-0">
         <ParticleBackground />
@@ -57,13 +71,14 @@ export default function VakanzkostenRechner() {
           ref={titleRef}
           className="text-4xl md:text-5xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
         >
-          Personalvermittlung und Headhunting zum Fixpreis. Null Risiko.
+          Vakanzkosten-Rechner: Personalvermittlung zum Fixpreis statt teurer Provisionen
         </h1>
 
         <div ref={contentRef} className="text-center mb-12">
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Professionelles Headhunting und Recruiting zum Festpreis – 9.999 € netto pro Projekt. Keine versteckten
-            Kosten, keine Überraschungen.
+            Professionelles Headhunting und Recruiting zum garantierten Festpreis von 9.999 € netto pro Position. Keine
+            versteckten Kosten, keine prozentualen Provisionen – sparen Sie bis zu 70% gegenüber traditionellen
+            Personalberatern.
           </p>
         </div>
 

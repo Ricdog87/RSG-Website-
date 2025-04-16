@@ -11,7 +11,19 @@ export const metadata: Metadata = {
     "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen. KI-gestütztes Talent-Matching und Recruiting.",
   generator: "Next.js",
   applicationName: "RSG Recruiting Solutions Group",
-  keywords: ["Personalvermittlung", "Recruiting", "Fixpreis", "Headhunting", "KI-Matching", "Talent", "Jobs"],
+  keywords: [
+    "Personalvermittlung",
+    "Recruiting",
+    "Fixpreis",
+    "Headhunting",
+    "KI-Matching",
+    "Talent",
+    "Jobs",
+    "Stellenangebote",
+    "Personalberatung",
+    "Vakanzkosten",
+    "Personalsuche",
+  ],
   authors: [{ name: "RSG Recruiting Solutions Group GmbH" }],
   creator: "RSG Recruiting Solutions Group GmbH",
   publisher: "RSG Recruiting Solutions Group GmbH",
@@ -23,6 +35,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.rsg-recruiting.de"),
   alternates: {
     canonical: "/",
+    languages: {
+      "de-DE": "/de",
+      "en-US": "/en",
+    },
   },
   openGraph: {
     title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
@@ -31,11 +47,20 @@ export const metadata: Metadata = {
     siteName: "RSG Recruiting Solutions Group",
     locale: "de_DE",
     type: "website",
+    images: [
+      {
+        url: "https://www.rsg-recruiting.de/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "RSG Recruiting Solutions Group - Personalvermittlung zum Fixpreis",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
     description: "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen.",
+    images: ["https://www.rsg-recruiting.de/images/og-image.jpg"],
   },
   verification: {
     google: "google-site-verification-code", // Ersetzen Sie dies mit Ihrem tatsächlichen Verifizierungscode
@@ -52,6 +77,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href="https://www.rsg-recruiting.de/" />
 
         {/* Structured data for better SEO */}
         <script

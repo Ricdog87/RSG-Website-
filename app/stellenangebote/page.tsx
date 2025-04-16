@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import ParticleBackground from "@/components/particle-background"
+import Head from "next/head"
 
 // Stellenangebot Typ
 interface JobOffer {
@@ -23,9 +24,11 @@ interface JobOffer {
   date: string
   isExclusive: boolean
   applyLink?: string
+  keywords?: string[] // Neue Eigenschaft für SEO-Keywords
 }
 
 export default function Stellenangebote() {
+  // Bestehender Code bleibt unverändert
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
@@ -44,18 +47,18 @@ export default function Stellenangebote() {
     }
   }, [])
 
-  // Beispiel-Stellenangebote
+  // Beispiel-Stellenangebote mit optimierten Titeln und Beschreibungen
   const jobOffers: JobOffer[] = [
     {
       id: "job-1",
-      title: "ERP-Spezialist mit Business Central & Power BI Fokus",
+      title: "ERP-Spezialist (m/w/d) mit Microsoft Business Central & Power BI Expertise",
       company: "Exklusiver Suchauftrag für ein führendes Unternehmen im Retail-Bereich",
       location: "Frankfurt am Main",
       type: "Vollzeit",
       category: "IT-Spezialisten",
       salary: "80.000€ - 110.000€",
       description:
-        "Für unseren Kunden, ein international agierendes Handelsunternehmen, suchen wir einen erfahrenen ERP-Spezialisten mit Fokus auf Microsoft Business Central. Sie werden die Weiterentwicklung des ERP-Systems verantworten und als Schnittstelle zwischen IT und Fachabteilungen fungieren.",
+        "Für unseren Kunden, ein international agierendes Handelsunternehmen, suchen wir einen erfahrenen ERP-Spezialisten mit Fokus auf Microsoft Business Central. In dieser Position verantworten Sie die strategische Weiterentwicklung des ERP-Systems und fungieren als wichtige Schnittstelle zwischen IT-Abteilung und Fachabteilungen. Sie optimieren Geschäftsprozesse und implementieren innovative Lösungen für maximale Effizienz.",
       requirements: [
         "Mehrjährige Erfahrung mit Microsoft Dynamics 365 Business Central/NAV",
         "Fundierte SQL-Kenntnisse und Erfahrung mit Power BI",
@@ -66,17 +69,26 @@ export default function Stellenangebote() {
       isExclusive: true,
       applyLink:
         "https://lacar-associate-employee.starhunter.software/Headhunter/project/job-ad/hash/67fd48cb781e7/lang/55084dc43958d",
+      keywords: [
+        "ERP-Spezialist",
+        "Microsoft Business Central",
+        "Power BI",
+        "Dynamics 365",
+        "SQL",
+        "Frankfurt",
+        "Handel",
+      ],
     },
     {
       id: "job-2",
-      title: "Senior KI-Ingenieur",
+      title: "Senior KI-Ingenieur / AI Engineer (m/w/d) - Machine Learning & Deep Learning",
       company: "Exklusiver Suchauftrag für einen führenden KI-Technologieanbieter",
       location: "Berlin",
       type: "Vollzeit",
       category: "KI-Talentmatching",
       salary: "90.000€ - 120.000€",
       description:
-        "Im Auftrag eines führenden Technologieanbieters im Bereich künstliche Intelligenz suchen wir exklusiv einen erfahrenen KI-Ingenieur. Sie werden an der Entwicklung und Implementierung von KI-Modellen zur Optimierung von Geschäftsprozessen arbeiten und mit interdisziplinären Teams zusammenarbeiten.",
+        "Im Auftrag eines führenden Technologieanbieters im Bereich künstliche Intelligenz suchen wir exklusiv einen erfahrenen KI-Ingenieur. In dieser Position entwickeln und implementieren Sie innovative KI-Modelle zur Optimierung von Geschäftsprozessen und arbeiten eng mit interdisziplinären Teams zusammen. Sie gestalten die Zukunft der KI-Technologie aktiv mit und setzen neue Maßstäbe in der Branche.",
       requirements: [
         "Master oder Promotion in Informatik, Maschinellem Lernen oder verwandten Bereichen",
         "5+ Jahre Erfahrung in der Entwicklung von KI-Lösungen",
@@ -87,6 +99,16 @@ export default function Stellenangebote() {
       isExclusive: true,
       applyLink:
         "https://lacar-associate-employee.starhunter.software/Headhunter/project/job-ad/hash/67fd48cb781e7/lang/55084dc43958d",
+      keywords: [
+        "KI-Ingenieur",
+        "AI Engineer",
+        "Machine Learning",
+        "Deep Learning",
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "Berlin",
+      ],
     },
     {
       id: "job-3",
@@ -481,6 +503,19 @@ export default function Stellenangebote() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* SEO Meta Tags */}
+      <Head>
+        <title>Aktuelle Stellenangebote | RSG Recruiting Solutions Group</title>
+        <meta
+          name="description"
+          content="Entdecken Sie exklusive Stellenangebote in IT, KI, Finance, Engineering und mehr. Finden Sie Ihre Traumstelle mit der RSG Recruiting Solutions Group."
+        />
+        <meta
+          name="keywords"
+          content="Stellenangebote, Jobs, Karriere, IT Jobs, KI Jobs, Finance Jobs, Engineering, Projektmanagement, Recruiting"
+        />
+      </Head>
+
       {/* Particle Background */}
       <div className="fixed inset-0 z-0">
         <ParticleBackground />
@@ -496,12 +531,13 @@ export default function Stellenangebote() {
           ref={titleRef}
           className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
         >
-          Exklusive Stellenangebote unserer Kunden
+          Aktuelle Stellenangebote & Karrieremöglichkeiten
         </h1>
 
         <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8 text-center">
           Als spezialisierte Personalvermittlung wurden wir von führenden Unternehmen exklusiv beauftragt, die besten
-          Talente für diese Positionen zu finden. Entdecken Sie hier unsere aktuellen Suchaufträge.
+          Talente für diese Positionen zu finden. Entdecken Sie hier unsere aktuellen Suchaufträge und Ihre nächste
+          Karrierechance.
         </p>
 
         {aiAnalysisUsed && (
