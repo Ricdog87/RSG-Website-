@@ -794,7 +794,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative py-12 bg-black border-t border-white/10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-8">
             <div>
               <div className="w-36 sm:w-48 h-12 mb-4">
                 <RSGLogo />
@@ -868,6 +868,41 @@ export default function Home() {
                   <Link href="/datenschutz" className="text-white/60 hover:text-cyan-400 transition-colors">
                     Datenschutz
                   </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold mb-4">Unsere Marken</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="https://www.elumalab.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 hover:text-cyan-400 transition-colors"
+                  >
+                    Elumalab
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://lacar-learn-ai-pro.lovable.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 hover:text-cyan-400 transition-colors"
+                  >
+                    Lacar eLearning
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://lovable.dev/projects/3489c876-6946-4afd-9a70-d12984fe102e"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 hover:text-cyan-400 transition-colors"
+                  >
+                    RSG CONNECT
+                  </a>
                 </li>
               </ul>
             </div>
