@@ -885,24 +885,13 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://lacar-learn-ai-pro.lovable.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/60 hover:text-cyan-400 transition-colors"
-                  >
-                    Lacar eLearning
-                  </a>
+                  <span className="text-white/60">RSG AI Consulting</span>
                 </li>
                 <li>
-                  <a
-                    href="https://lovable.dev/projects/3489c876-6946-4afd-9a70-d12984fe102e"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/60 hover:text-cyan-400 transition-colors"
-                  >
-                    RSG CONNECT
-                  </a>
+                  <span className="text-white/60">Lacar eLearning</span>
+                </li>
+                <li>
+                  <span className="text-white/60">RSG CONNECT</span>
                 </li>
               </ul>
             </div>
