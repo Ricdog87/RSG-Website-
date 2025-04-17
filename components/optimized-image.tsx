@@ -11,6 +11,7 @@ interface OptimizedImageProps {
   className?: string
   priority?: boolean
   sizes?: string
+  quality?: number
 }
 
 export default function OptimizedImage({
@@ -21,11 +22,15 @@ export default function OptimizedImage({
   className,
   priority = false,
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
+  quality = 90,
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true)
 
-  // Konvertiere PNG/JPG URLs zu WebP
-  const webpSrc = src.replace(/\.(png|jpe?g)$/i, ".webp")
+  // Check if the image is from Cloudinary
+  const isCloudinaryImage = src.includes("res.cloudinary.com")
+
+  // For non-Cloudinary images, convert PNG/JPG URLs to WebP if not already WebP
+  const webpSrc = !isCloudinaryImage && !src.endsWith(".webp") ? src.replace(/\.(png|jpe?g)$/i, ".webp") : src
 
   return (
     <div className={`relative ${className || ""} ${isLoading ? "animate-pulse bg-white/5" : ""}`}>
@@ -40,7 +45,7 @@ export default function OptimizedImage({
         onLoadingComplete={() => setIsLoading(false)}
         loading={priority ? "eager" : "lazy"}
         fill={!width || !height}
-        quality={90}
+        quality={quality}
       />
     </div>
   )
