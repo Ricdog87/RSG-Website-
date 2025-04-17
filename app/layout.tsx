@@ -5,10 +5,11 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { organizationJsonLd, websiteJsonLd } from "./structured-data"
 import "./globals.css"
 
+// Aktualisiere die Metadata für die Startseite
 export const metadata: Metadata = {
   title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
   description:
-    "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen. KI-gestütztes Talent-Matching und Recruiting.",
+    "Professionelles Recruiting und Headhunting zum garantierten Festpreis von 9.999€. Sparen Sie bis zu 70% gegenüber traditionellen Personalberatern mit unserem innovativen Fixpreis-Modell.",
   generator: "Next.js",
   applicationName: "RSG Recruiting Solutions Group",
   keywords: [
@@ -42,7 +43,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
-    description: "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen.",
+    description:
+      "Professionelles Recruiting und Headhunting zum garantierten Festpreis von 9.999€. Sparen Sie bis zu 70% gegenüber traditionellen Personalberatern.",
     url: "https://www.rsg-recruiting.de",
     siteName: "RSG Recruiting Solutions Group",
     locale: "de_DE",
@@ -59,7 +61,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "RSG Recruiting Solutions Group | Personalvermittlung zum Fixpreis",
-    description: "Spezialisierte Personalvermittlung zum Fixpreis von 9.999€ netto für alle Positionen.",
+    description:
+      "Professionelles Recruiting und Headhunting zum garantierten Festpreis von 9.999€. Sparen Sie bis zu 70% gegenüber traditionellen Personalberatern.",
     images: ["https://www.rsg-recruiting.de/images/og-image.jpg"],
   },
   verification: {

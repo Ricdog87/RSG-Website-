@@ -1,16 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
 
+// Aktualisiere die Metadata für die AI-Matching-Seite
 export const metadata: Metadata = {
   title: "KI-Talent-Matching & Karriereanalyse | RSG Recruiting Solutions Group",
   description:
-    "Entdecken Sie mit unserem KI-gestützten Talent-Matching-System Ihre idealen Karrierewege. Laden Sie Ihren Lebenslauf hoch und erhalten Sie eine detaillierte Analyse Ihrer Stärken und passende Jobempfehlungen.",
+    "Nutzen Sie unser KI-gestütztes Talent-Matching für Ihre Karriere. Laden Sie Ihren Lebenslauf hoch und erhalten Sie eine präzise Analyse Ihrer Stärken und passende Jobempfehlungen.",
   keywords:
-    "KI-Talent-Matching, Karriereanalyse, Lebenslauf-Analyse, Berufliche Stärken, Karriereempfehlungen, Personalvermittlung, Recruiting, Jobsuche, Karriereberatung, Berufswegplanung",
+    "KI-Talent-Matching, Karriereanalyse, Lebenslauf-Analyse, Berufliche Stärken, Karriereempfehlungen, Personalvermittlung, Recruiting, Jobsuche",
   openGraph: {
     title: "KI-Talent-Matching & Karriereanalyse | RSG Recruiting Solutions Group",
     description:
-      "Entdecken Sie mit unserem KI-gestützten Talent-Matching-System Ihre idealen Karrierewege. Laden Sie Ihren Lebenslauf hoch und erhalten Sie eine detaillierte Analyse Ihrer Stärken und passende Jobempfehlungen.",
+      "Nutzen Sie unser KI-gestütztes Talent-Matching für Ihre Karriere. Laden Sie Ihren Lebenslauf hoch und erhalten Sie eine präzise Analyse Ihrer Stärken und passende Jobempfehlungen.",
     url: "https://www.rsg-recruiting.de/ai-matching",
     type: "website",
     images: [
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "KI-Talent-Matching & Karriereanalyse | RSG Recruiting Solutions Group",
-    description: "Entdecken Sie mit unserem KI-gestützten Talent-Matching-System Ihre idealen Karrierewege.",
+    description: "Nutzen Sie unser KI-gestütztes Talent-Matching für Ihre Karriere.",
     images: ["https://www.rsg-recruiting.de/images/ai-matching-preview.jpg"],
   },
 }
