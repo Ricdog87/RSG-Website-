@@ -43,7 +43,8 @@ const nextConfig = {
    webpackBuildWorker: true,
    parallelServerBuildTraces: true,
    parallelServerCompiles: true,
-   optimizeCss: true, // CSS-Optimierung aktivieren
+  // Remove or disable optimizeCss until we add the dependency
+  optimizeCss: false,
    optimizePackageImports: ['lucide-react', '@react-three/drei'],
  },
 }
