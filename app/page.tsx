@@ -406,7 +406,7 @@ export default function Home() {
         {/* Update the hero section for better mobile responsiveness */}
         <div className="container mx-auto px-4 z-10 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-text-shimmer px-2">
-            Personalvermittlung zum Fixpreis | Headhunting & Recruiting
+            Recruiting & Headhunting zum Fixpreis | Sparen Sie bis zu 70% Provision
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 sm:mb-12 font-light px-4">
             Professionelles Recruiting und Headhunting zum garantierten Festpreis von 9.999 € netto. Keine prozentualen
