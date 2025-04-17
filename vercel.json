@@ -38,6 +38,8 @@
     }
   ],
   "images": {
+    "sizes": [320, 420, 768, 1024, 1200],
+    "domains": ["deine-domain.de", "res.cloudinary.com"],
     "formats": ["image/webp"],
     "minimumCacheTTL": 31536000
   }
