@@ -3,11 +3,11 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import Link from "next/link"
-import Image from "next/image"
 import { ArrowLeft, Calendar, Users, Rocket, Heart, Zap, Globe, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ParticleBackground from "@/components/particle-background"
 import Head from "next/head"
+import OptimizedImage from "@/components/optimized-image"
 
 export default function Karriere() {
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -187,9 +187,9 @@ export default function Karriere() {
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg blur-lg opacity-30"></div>
               <div className="relative h-[300px] sm:h-[400px] w-full rounded-lg overflow-hidden">
-                <Image
-                  src="/images/workspace.png"
-                  alt="RSG Recruiting - Werden Sie Teil unseres Teams"
+                <OptimizedImage
+                  src="/images/workspace.webp"
+                  alt="RSG Recruiting Solutions Group Arbeitsumgebung - Modernes Büro für Personalvermittlung"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

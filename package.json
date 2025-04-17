@@ -70,7 +70,10 @@
     "@react-three/drei": "latest",
     "framer-motion": "latest",
     "react-swipeable": "latest",
-    "schema-dts": "latest"
+    "schema-dts": "latest",
+    "fs": "latest",
+    "path": "latest",
+    "child_process": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

@@ -2,8 +2,8 @@
 
 import { useRef, useEffect } from "react"
 import { gsap } from "gsap"
-import Image from "next/image"
 import { Linkedin, Mail } from "lucide-react"
+import OptimizedImage from "./optimized-image"
 
 interface TeamMemberProps {
   name: string
@@ -71,9 +71,9 @@ export default function TeamMember({
               : "border-cyan-500/50 group-hover:border-cyan-400"
           } transition-colors duration-300`}
         >
-          <Image
+          <OptimizedImage
             src={avatar || "/placeholder.svg"}
-            alt={name}
+            alt={`Porträt von ${name}, ${role} bei RSG Recruiting Solutions Group`}
             fill
             className="object-cover object-center"
             sizes="(max-width: 640px) 128px, 160px"

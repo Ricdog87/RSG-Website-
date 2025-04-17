@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
-import Image from "next/image"
+import OptimizedImage from "./optimized-image"
 
 export default function RSGLogo() {
   const logoRef = useRef<HTMLDivElement>(null)
@@ -34,9 +34,9 @@ export default function RSGLogo() {
 
   return (
     <div ref={logoRef} className="relative w-full h-full flex items-center">
-      <Image
-        src="/images/rsg-logo.png"
-        alt="RSG Recruiting Solutions Group Logo"
+      <OptimizedImage
+        src="/images/rsg-logo.webp"
+        alt="RSG Recruiting Solutions Group Logo - Personalvermittlung zum Fixpreis"
         width={180}
         height={60}
         className="object-contain"
